@@ -24,6 +24,8 @@ service EmployeeService {
   // List all employees
   rpc ListAllEmployees (EmptyMessage) returns (EmployeeDataList) {}
   
+  //Delete all employees
+  rpc DeleteAllEmployees (EmptyMessage) returns (StatusReply) {}
 }
 
 message EmployeeData {
