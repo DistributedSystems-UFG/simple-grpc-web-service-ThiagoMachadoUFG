@@ -57,7 +57,7 @@ class EmployeeServer(EmployeeService_pb2_grpc.EmployeeServiceServicer):
    
   def DeleteAllEmployees(self, request, context):
     empList = [emp for emp in empDB]
-    if len(list) == 0:
+    if len(empList) == 0:
       return EmployeeService_pb2.StatusReply(status='NOK')
 
     for emp in empList:
