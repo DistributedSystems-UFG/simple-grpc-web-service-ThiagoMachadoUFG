@@ -54,6 +54,14 @@ class EmployeeServer(EmployeeService_pb2_grpc.EmployeeServiceServicer):
       emp_data = EmployeeService_pb2.EmployeeData(id=item['id'], name=item['name'], title=item['title']) 
       list.employee_data.append(emp_data)
     return list
+   
+  def DeleteAllEmployees(self, request, context):
+    if len(empDB) == 0:
+      return EmployeeService_pb2.StatusReply(status='NOK')
+
+    for emp in empDB:
+     empDB.remove(emp)
+    return EmployeeService_pb2.StatusReply(status='OK')
 
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
